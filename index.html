@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สื่อการเรียนรู้</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background: #f8f6f1;
+            color: #2d3436;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            z-index: 1000;
+        }
+
+        .topbar {
+            background: #1a1a2e;
+            padding: 12px 0;
+        }
+
+        .topbar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .topbar-nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        .topbar-nav a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .topbar-nav a:hover {
+            color: #fff;
+        }
+
+        .hero {
+            padding: 120px 32px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: #1a1a2e;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 72px);
+            font-weight: 700;
+            color: #1a1a2e;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            max-width: 700px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #636e72;
+            max-width: 520px;
+            line-height: 1.8;
+        }
+
+        .divider {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .divider-line {
+            height: 1px;
+            background: #ddd;
+        }
+
+        .chapters-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 32px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a2e;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .section-count {
+            font-size: 13px;
+            color: #999;
+        }
+
+        .chapters-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .chapter-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            padding: 40px;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .chapter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #1a1a2e;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .chapter-card:hover {
+            border-color: #1a1a2e;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .chapter-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .chapter-num {
+            font-size: 64px;
+            font-weight: 700;
+            color: #f0ede8;
+            line-height: 1;
+            margin-bottom: 24px;
+        }
+
+        .chapter-card:hover .chapter-num {
+            color: #e8e4dc;
+        }
+
+        .chapter-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+        }
+
+        .chapter-desc {
+            font-size: 15px;
+            color: #777;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .chapter-meta {
+            display: flex;
+            gap: 24px;
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .chapter-card.featured {
+            grid-column: span 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            background: #1a1a2e;
+            border-color: #1a1a2e;
+        }
+
+        .chapter-card.featured::before {
+            display: none;
+        }
+
+        .chapter-card.featured .chapter-num {
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 120px;
+        }
+
+        .chapter-card.featured .chapter-title {
+            color: #fff;
+        }
+
+        .chapter-card.featured .chapter-desc {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .chapter-card.featured .chapter-meta {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .chapter-card.featured:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px rgba(26, 26, 46, 0.3);
+        }
+
+        .featured-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .visual-pattern {
+            width: 200px;
+            height: 200px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .visual-pattern-inner {
+            width: 120px;
+            height: 120px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+        }
+
+        .arrow-icon {
+            display: inline-block;
+            margin-left: 8px;
+            transition: transform 0.2s;
+        }
+
+        .chapter-card:hover .arrow-icon {
+            transform: translateX(4px);
+        }
+
+        footer {
+            background: #1a1a2e;
+            padding: 48px 32px;
+            margin-top: 80px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 900px) {
+            .chapters-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chapter-card.featured {
+                grid-column: span 1;
+                grid-template-columns: 1fr;
+            }
+
+            .featured-visual {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 80px 24px 60px;
+            }
+
+            .chapters-section {
+                padding: 60px 24px;
+            }
+
+            .chapter-card {
+                padding: 32px;
+            }
+
+            .topbar-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grain"></div>
+
+    <div class="topbar">
+        <div class="topbar-inner">
+            <div class="logo">Learning Hub</div>
+            <nav class="topbar-nav">
+                <a href="index.html">หน้าแรก</a>
+                <a href="chapter1.html">ตำอธิบายรายวิชา</a>
+                <a href="chapter1.html">บทที่ 1</a>
+                <a href="chapter2.html">บทที่ 2</a>
+                <a href="chapter3.html">บทที่ 3</a>
+                <a href="chapter4.html">บทที่ 4</a>
+                <a href="chapter5.html">บทที่ 5</a>
+                <a href="chapter1.html">ผู้จัดทำ</a>
+            </nav>
+        </div>
+    </div>
+
+    <section class="hero">
+        <span class="hero-label">สื่อการเรียนรู้</span>
+        <h1>เนื้อหาบทเรียน และเอกสารประกอบ</h1>
+        <p>รวบรวมเนื้อหาสำคัญ เอกสารประกอบการศึกษา และแบบทดสอบ เพื่อการเรียนรู้ที่มีประสิทธิภาพ</p>
+    </section>
+
+    <div class="divider">
+        <div class="divider-line"></div>
+    </div>
+
+    <section class="chapters-section">
+        <div class="section-header">
+            <h2 class="section-title">บทเรียนทั้งหมด</h2>
+            <span class="section-count">5 บท</span>
+        </div>
+
+        <div class="chapters-grid">
+            <a href="chapter1.html" class="chapter-card featured">
+                <div>
+                    <div class="chapter-num">01</div>
+                    <h3 class="chapter-title">ระบบจำนวนจริง <span class="arrow-icon">→</span></h3>
+                    <p class="chapter-desc">ทำความเข้าใจกับหลักการพื้นฐานของระบบจำนวนจริง</p>
+                    <div class="chapter-meta">
+                        <span>4 หัวข้อย่อย วิวัฒนาการของระบบจำนวนและตัวเลข โครงสร้างของระบบจำนวน จำนวนจริง
+                            ค่าสัมบูรณ์ของจำนวนจริง</span>
+                        <span>เอกสาร 1 ไฟล์</span><span>เแบบทดสอบ 2 ไฟล์</span>
+                    </div>
+                </div>
+                <div class="featured-visual">
+                    <div class="visual-pattern">
+                        <div class="visual-pattern-inner"></div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="chapter2.html" class="chapter-card">
+                <div class="chapter-num">02</div>
+                <h3 class="chapter-title">ระบบจำนวนและเลขฐาน<span class="arrow-icon">→</span></h3>
+                <p class="chapter-desc">ทำความเข้าใจกับระบบจำนวนและเลขฐานที่ใช้ในคอมพิวเตอร์</p>
+                <div class="chapter-meta">
+                    <span>5 หัวข้อย่อย วิวัฒนาการของระบบจำนวนและตัวเลข โครงสร้างของระบบจำนวน ระบบเลขฐานต่าง ๆ
+                        การเปลี่ยนฐานในระบบตัวเลข จำนวนจริง</span>
+                    <span>เอกสาร 2 ไฟล์</span><span>เแบบทดสอบ 2 ไฟล์</span>
+                </div>
+            </a>
+
+            <a href="chapter3.html" class="chapter-card">
+                <div class="chapter-num">03</div>
+                <h3 class="chapter-title">การคำนวณเลขฐาน</h3>
+                <p class="chapter-desc">ทำความเข้าใจกับการคำนวณเลขฐานต่างๆ</p>
+                <div class="chapter-meta">
+                    <span>5 หัวข้อย่อย หลักการของการบวกในระบบเลขฐาน ตัวอย่างการบวกเลขฐานสอง หลักการของการลบในระบบเลขฐาน
+                        ตัวอย่างการลบเลขฐานสอง การประยุกต์ใช้การบวกและการลบเลขฐาน</span>
+                    <span>เอกสาร 1 ไฟล์</span><span>เแบบทดสอบ 2 ไฟล์</span>
+                </div>
+            </a>
+
+            <a href="chapter4.html" class="chapter-card">
+                <div class="chapter-num">04</div>
+                <h3 class="chapter-title">ตรรกศาสตร์</h3>
+                <p class="chapter-desc">??</p>
+                <div class="chapter-meta">
+                    <span>เอกสาร 2 ไฟล์</span><span>เแบบทดสอบ 2 ไฟล์</span>
+                </div>
+            </a>
+
+            <a href="chapter5.html" class="chapter-card">
+                <div class="chapter-num">05</div>
+                <h3 class="chapter-title">พีชคณิตบูลีน และวงจรตรรกะ</h3>
+                <p class="chapter-desc">?</p>
+                <div class="chapter-meta">
+                    <span>เอกสาร 2 ไฟล์</span><span>เแบบทดสอบ 1 ไฟล์</span>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-text">สื่อการเรียนรู้</span>
+            <div class="footer-links">
+                <a href="index.html">หน้าแรก</a>
+                <a href="chapter1.html">บทที่ 1</a>
+                <a href="chapter2.html">บทที่ 2</a>
+                <a href="chapter3.html">บทที่ 3</a>
+                <a href="chapter4.html">บทที่ 4</a>
+                <a href="chapter5.html">บทที่ 5</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 3 - การบวกและการลบในระบบเลขฐาน</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background: #f8f6f1;
+            color: #2d3436;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            z-index: 1000;
+        }
+
+        .topbar {
+            background: #1a1a2e;
+            padding: 12px 0;
+        }
+
+        .topbar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .topbar-nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        .topbar-nav a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .topbar-nav a:hover,
+        .topbar-nav a.active {
+            color: #fff;
+        }
+
+        .breadcrumb {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 32px 32px 0;
+            font-size: 13px;
+            color: #999;
+        }
+
+        .breadcrumb a {
+            color: #1a1a2e;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .chapter-header {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 48px 32px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .chapter-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #999;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .chapter-header h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            color: #1a1a2e;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .chapter-header p {
+            font-size: 18px;
+            color: #777;
+            max-width: 600px;
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 64px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 64px 32px;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 32px;
+            height: fit-content;
+        }
+
+        .sidebar-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: #999;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar-nav a {
+            display: block;
+            font-size: 14px;
+            color: #777;
+            text-decoration: none;
+            padding: 8px 0;
+            border-left: 2px solid transparent;
+            padding-left: 16px;
+            transition: all 0.2s;
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            color: #1a1a2e;
+            border-left-color: #1a1a2e;
+        }
+
+        .content {
+            min-width: 0;
+        }
+
+        .content h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin: 48px 0 24px;
+            padding-top: 24px;
+        }
+
+        .content h2:first-child {
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        .content p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .content ul,
+        .content ol {
+            margin: 20px 0 28px 24px;
+            color: #555;
+        }
+
+        .content li {
+            margin-bottom: 12px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .callout {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-left: 4px solid #1a1a2e;
+            padding: 24px 28px;
+            margin: 32px 0;
+        }
+
+        .callout-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .callout.case-study {
+            background: #1a1a2e;
+            border: none;
+        }
+
+        .callout.case-study .callout-title {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .callout.case-study p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .files-section {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            padding: 32px;
+            margin: 48px 0;
+        }
+
+        .files-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .files-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: #f8f6f1;
+            text-decoration: none;
+            color: #1a1a2e;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .file-item:hover {
+            border-color: #1a1a2e;
+            background: #fff;
+        }
+
+        .file-icon {
+            width: 40px;
+            height: 40px;
+            background: #1a1a2e;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .file-info {
+            min-width: 0;
+        }
+
+        .file-name {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .file-type {
+            font-size: 12px;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .nav-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 32px 0;
+            margin-top: 48px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .nav-link {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            padding: 16px 24px;
+            border: 1px solid #e5e5e5;
+            transition: all 0.2s;
+            max-width: 280px;
+        }
+
+        .nav-link:hover {
+            border-color: #1a1a2e;
+            background: #fff;
+        }
+
+        .nav-link-label {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 4px;
+        }
+
+        .nav-link-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        footer {
+            background: #1a1a2e;
+            padding: 48px 32px;
+            margin-top: 80px;
+        }
+
+        .footer-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 800px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .sidebar {
+                position: static;
+                padding-bottom: 32px;
+                border-bottom: 1px solid #e5e5e5;
+            }
+
+            .files-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-bottom {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .nav-link {
+                width: 100%;
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .chapter-header {
+                padding: 32px 24px;
+            }
+
+            .content-wrapper {
+                padding: 48px 24px;
+            }
+
+            .topbar-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grain"></div>
+
+    <div class="topbar">
+        <div class="topbar-inner">
+            <a href="index.html" class="logo">Learning Hub</a>
+            <nav class="topbar-nav">
+                <a href="index.html">หน้าแรก</a>
+                <a href="chapter1.html">ตำอธิบายรายวิชา</a>
+                <a href="chapter1.html">บทที่ 1</a>
+                <a href="chapter2.html">บทที่ 2</a>
+                <a href="chapter3.html">บทที่ 3</a>
+                <a href="chapter4.html">บทที่ 4</a>
+                <a href="chapter5.html">บทที่ 5</a>
+                <a href="chapter1.html">ผู้จัดทำ</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="index.html">หน้าแรก</a> / บทที่ 3
+    </div>
+
+    <header class="chapter-header">
+        <div class="chapter-label">บทที่ 3</div>
+        <h1>การบวกและการลบในระบบเลขฐาน</h1>
+        <p>พื้นฐานการคำนวณในโลกดิจิทัล</p>
+    </header>
+
+    <div class="content-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-title">ในบทนี้</div>
+            <ul class="sidebar-nav">
+                <li><a href="#section-1" class="active">3.1 หลักการของการบวกในระบบเลขฐาน</a></li>
+                <li><a href="#section-2">3.2 ตัวอย่างการบวกเลขฐานสอง</a></li>
+                <li><a href="#section-3">3.3 หลักการของการลบในระบบเลขฐาน</a></li>
+                <li><a href="#section-4">3.4 ตัวอย่างการลบเลขฐานสอง</a></li>
+                <li><a href="#section-5">3.5 การประยุกต์ใช้การบวกและการลบเลขฐาน</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h2 id="section-1">3.1 หลักการของการบวกในระบบเลขฐาน</h2>
+            <p>
+                การบวกในระบบเลขฐานมีหลักการคล้ายกับการบวกเลขฐานสิบ คือบวกตัวเลขในหลักเดียวกันจากขวาไปซ้าย
+                และถ้าผลบวกมีค่ามากกว่าหรือเท่ากับค่าฐาน จะต้อง “ทด” ไปยังหลักถัดไป ตัวอย่างเช่น ในเลขฐานสอง เมื่อบวก 1
+                กับ 1 จะได้ผลลัพธ์เป็น 10 ซึ่งหมายถึงได้ 0 และทด 1 ไปยังหลักถัดไป
+
+                หลักการนี้สามารถใช้ได้กับทุกระบบเลขฐาน ไม่ว่าจะเป็นฐานสอง ฐานห้า หรือฐานสิบหก
+                โดยต้องคำนึงถึงค่าฐานและสัญลักษณ์ตัวเลขที่ใช้ในแต่ละระบบ
+            </p>
+
+            <h2 id="section-2">3.2 ตัวอย่างการบวกเลขฐานสอง</h2>
+            <p>เลขฐานสองเป็นระบบเลขฐานที่ใช้มากที่สุดในงานคอมพิวเตอร์ โดยใช้เพียงตัวเลข 0 และ 1
+                การบวกเลขฐานสองมีรูปแบบง่าย ๆ ดังนี้</p>
+            <ul>
+                <li>0 + 0 = 0</li>
+                <li>0 + 1 = 1</li>
+                <li>1 + 0 = 1</li>
+                <li>1 + 1 = 10 (ได้ 0 และทด 1)</li>
+            </ul>
+            <p>การบวกหลายหลักจะใช้หลักการเดียวกันกับการบวกเลขฐานสิบ แต่ต้องระวังการทดเมื่อผลรวมเท่ากับหรือมากกว่าสอง</p>
+            <br><img src="img/img10.jpg" alt="ภาพประกอบ" width="100%"><br>
+
+            <h2 id="section-3">3.3 หลักการของการลบในระบบเลขฐาน</h2>
+            <p>การลบในระบบเลขฐานใช้หลักการคล้ายกับการลบเลขฐานสิบ คือถ้าตัวตั้งน้อยกว่าตัวลบ จะต้อง “ยืม” จากหลักถัดไป
+                การยืมในแต่ละฐานจะยืมตามค่าฐาน เช่น ในฐานสอง เมื่อยืมจะได้ค่าเพิ่มเป็น 2 ในหลักนั้น
+
+                การลบในระบบเลขฐานจำเป็นต้องเข้าใจค่าประจำหลักและการยืมอย่างถูกต้อง เพื่อหลีกเลี่ยงความผิดพลาดในการคำนวณ
+            </p>
+
+            <h2 id="section-4">3.4 ตัวอย่างการลบเลขฐานสอง</h2>
+            <p>ในการลบเลขฐานสอง กรณีที่ไม่ต้องยืมจะคำนวณได้ง่าย เช่น 1 – 0 = 1 และ 1 – 1 = 0 แต่ถ้าเป็นกรณี 0 – 1
+                จะต้องยืมจากหลักถัดไป ทำให้หลักนั้นกลายเป็น 2 และคำนวณต่อไปตามขั้นตอน
+
+                วิธีการนี้เป็นพื้นฐานสำคัญของการทำงานในวงจรดิจิทัลและหน่วยประมวลผลของคอมพิวเตอร์</p>
+            <br><img src="img/img11.jpg" alt="ภาพประกอบ" width="100%"><br>
+
+            <h2 id="section-5">3.5 การประยุกต์ใช้การบวกและการลบเลขฐาน</h2>
+            <p>การบวกและการลบในระบบเลขฐานถูกนำไปใช้ในหลายด้าน เช่น</p>
+            <ul>
+                <li>การดำเนินการของหน่วยประมวลผลในคอมพิวเตอร์</li>
+                <li>การเขียนโปรแกรมและการคำนวณข้อมูลดิจิทัล</li>
+                <li>การสื่อสารข้อมูลและระบบเครือข่าย</li>
+            </ul>
+            <p>ความเข้าใจพื้นฐานเหล่านี้ช่วยให้ผู้เรียนสามารถต่อยอดไปสู่การเรียนรู้ระบบคอมพิวเตอร์ขั้นสูงได้</p>
+            <div class="files-section">
+                <div class="files-title">เอกสารและแบบทดสอบ</div>
+                <div class="files-grid">
+                    <a href="บท3/การบวกลบเลขฐาน.pdf" class="file-item">
+                        <div class="file-icon">PDF</div>
+                        <div class="file-info">
+                            <span class="file-name">เอกสารประกอบบทที่ 2</span>
+                            <span class="file-type">เอกสาร PDF</span>
+                        </div>
+                    </a>
+                    <a href="บท3/แบบฝึก.docx" class="file-item">
+                        <div class="file-icon">DOC</div>
+                        <div class="file-info">
+                            <span class="file-name">แบบทดสอบบทที่ 3</span>
+                            <span class="file-type">เอกสาร Doc</span>
+                        </div>
+                    </a>
+                    <a href="บท3/แบบฝึก 2.docx" class="file-item">
+                        <div class="file-icon">DOC</div>
+                        <div class="file-info">
+                            <span class="file-name">แบบทดสอบบทที่ 3</span>
+                            <span class="file-type">เอกสาร Doc</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="nav-bottom">
+                <a href="chapter2.html" class="nav-link">
+                    <span class="nav-link-label">บทก่อนหน้า</span>
+                    <span class="nav-link-title">บทที่ 2: ระบบจำนวนและเลขฐาน</span>
+                </a>
+                <a href="chapter4.html" class="nav-link" style="text-align: right;">
+                    <span class="nav-link-label">บทถัดไป</span>
+                    <span class="nav-link-title">บทที่ 4: ระบบเลชฐาน</span>
+                </a>
+            </nav>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-text">สื่อการเรียนรู้</span>
+            <div class="footer-links">
+                <a href="index.html">หน้าแรก</a>
+                <a href="chapter1.html">บทที่ 1</a>
+                <a href="chapter2.html">บทที่ 2</a>
+                <a href="chapter3.html">บทที่ 3</a>
+                <a href="chapter4.html">บทที่ 4</a>
+                <a href="chapter5.html">บทที่ 5</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
