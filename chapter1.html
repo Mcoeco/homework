@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 1 - ระบบจำนวนจริง</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="grain"></div>
+
+    <div class="topbar">
+        <div class="topbar-inner">
+            <a href="index.html" class="logo">Learning Hub</a>
+            <nav class="topbar-nav">
+                <a href="index.html">หน้าแรก</a>
+                <a href="chapter8.html">คำอธิบายรายวิชา</a>
+                <a href="chapter1.html" class="active">บทที่ 1</a>
+                <a href="chapter2.html">บทที่ 2</a>
+                <a href="chapter3.html">บทที่ 3</a>
+                <a href="chapter4.html">บทที่ 4</a>
+                <a href="chapter5.html">บทที่ 5</a>
+                <a href="chapter6.html">บทที่ 6</a>
+                <a href="chapter7.html">ผู้จัดทำ</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="index.html">หน้าแรก</a> / บทที่ 1
+    </div>
+
+    <header class="chapter-header">
+        <div class="chapter-label">บทที่ 1</div>
+        <h1>ระบบจำนวนจริง</h1>
+        <p>ทำความเข้าใจกับหลักการพื้นฐานของระบบจำนวนจริง</p>
+    </header>
+
+    <div class="content-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-title">ในบทนี้</div>
+            <ul class="sidebar-nav">
+                <li><a href="#section-1" class="active">1.1 วิวัฒนาการของระบบจำนวนและตัวเลข</a></li>
+                <li><a href="#section-2">1.2 โครงสร้างของระบบจำนวน</a></li>
+                <li><a href="#section-3">1.3 จำนวนจริงและเส้นจำนวนจริง</a></li>
+                <li><a href="#section-4">1.4 ค่าสัมบูรณ์ของจำนวนจริง</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h2 id="section-1">1.1 วิวัฒนาการของระบบจำนวนและตัวเลข</h2>
+            <p>
+                ในยุคก่อนประวัติศาสตร์ มนุษย์เริ่มบันทึกปริมาณด้วยวิธีง่ายๆ เช่น การขีดรอยบนผนังถ้ำหรือกระดูกสัตว์
+                เพื่อบอกจำนวนสัตว์ที่ล่าได้หรือการนับวันเวลา ต่อมามนุษย์ใช้การนับนิ้วมือและก้อนหินเป็นตัวแทนของจำนวน
+                และพัฒนาการใช้สัญลักษณ์รอยขีด หรือที่เรียกว่า "รอยขีดทอลลี่" เพื่อบันทึกจำนวนได้ชัดเจนขึ้น
+            </p>
+            <p>
+                เมื่ออารยธรรมเริ่มเจริญก้าวหน้า
+                ชาวสุเมเรียนได้พัฒนาระบบตัวเลขโดยใช้ดินเหนียวและอักษรรูปลิ่มหรือคูนีฟอร์ม
+                จากนั้นชาวบาบิโลเนียนได้สร้างระบบเลขฐาน 60 ซึ่งยังคงใช้ในระบบเวลา เช่น วินาที นาที และชั่วโมงในนาฬิกา
+                ต่อมาอารยธรรมอียิปต์ กรีก และโรมัน ได้พัฒนาระบบตัวเลขของตนเอง จนกระทั่งเกิดระบบตัวเลขฮินดู–อารบิก
+                ซึ่งเป็นพื้นฐานของตัวเลข 0–9 ที่ใช้กันทั่วโลกในปัจจุบัน
+            </p>
+
+            <h2 id="section-2">1.2 โครงสร้างของระบบจำนวน</h2>
+            <p>
+                ระบบจำนวนเป็นแนวคิดเชิงนามธรรมที่ใช้บอกปริมาณและแทนค่าต่างๆ ด้วยสัญลักษณ์ตัวเลข
+                นักคณิตศาสตร์ได้จัดหมวดหมู่ของจำนวนให้ง่ายต่อการศึกษา เช่น จำนวนธรรมชาติ จำนวนเต็ม จำนวนตรรกยะ
+                และจำนวนอตรรกยะ โดยระบบจำนวนที่ใช้งานมากที่สุดในชีวิตประจำวันคือ "ระบบจำนวนจริง"
+            </p>
+            <p>
+                ระบบจำนวนจริงประกอบด้วยจำนวนธรรมชาติ ศูนย์ จำนวนเต็มบวกและลบ จำนวนตรรกยะ และจำนวนอตรรกยะ
+                ซึ่งทั้งหมดรวมกันเป็นเซตของจำนวนจริง
+            </p>
+            <img src="img/img1.png" alt="โครงสร้างของระบบจำนวน">
+
+            <h2 id="section-3">1.3 จำนวนจริงและเส้นจำนวนจริง</h2>
+            <p>
+                จำนวนจริงเป็นกลุ่มของจำนวนที่ใช้บ่อยในชีวิตประจำวัน เช่น การวัดส่วนสูง น้ำหนัก เวลา และระยะทาง
+                การแสดงความสัมพันธ์ของจำนวนจริงนิยมใช้ "เส้นจำนวนจริง" ซึ่งมีศูนย์เป็นจุดเริ่มต้น
+                จำนวนบวกจะอยู่ทางขวาของศูนย์ และจำนวนลบจะอยู่ทางซ้ายของศูนย์
+            </p>
+            <p>
+                เส้นจำนวนช่วยให้เราเข้าใจการเปรียบเทียบค่าของจำนวน เช่น 2 มากกว่า 1 หรือ –3 น้อยกว่า –1
+                และช่วยให้เห็นตำแหน่งของจำนวนต่างๆ อย่างเป็นระบบ
+            </p>
+            <img src="img/img2.png" alt="เส้นจำนวนจริง">
+
+            <h2 id="section-4">1.4 ค่าสัมบูรณ์ของจำนวนจริง</h2>
+            <p>
+                ค่าสัมบูรณ์คือระยะห่างของจำนวนใดๆ จากศูนย์บนเส้นจำนวน โดยไม่สนใจเครื่องหมายบวกหรือลบ เช่น
+                ค่าสัมบูรณ์ของ –2 และ 2 มีค่าเท่ากันคือ 2 หน่วย
+                แนวคิดเรื่องค่าสัมบูรณ์ช่วยให้เข้าใจระยะห่างและขนาดของจำนวนได้ชัดเจนยิ่งขึ้น
+            </p>
+            <img src="img/img3.png" alt="ค่าสัมบูรณ์ของจำนวนจริง">
+
+            <!-- Music Player -->
+            <div class="music-player">
+                <div class="music-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+                    </svg>
+                </div>
+                <div class="music-info">
+                    <div class="music-title">เพลงจำเนื้อหาบทที่ 1</div>
+                    <div class="music-subtitle">ระบบจำนวนจริง - ฟังเพลงเพื่อช่วยจำเนื้อหา</div>
+                </div>
+                <div class="music-controls">
+                    <button class="music-btn" onclick="skipBack()" title="ย้อนกลับ 10 วินาที">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z" />
+                        </svg>
+                    </button>
+                    <button class="music-btn play-btn" onclick="togglePlay()" id="playBtn" title="เล่น/หยุด">
+                        <svg viewBox="0 0 24 24" id="playIcon">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </button>
+                    <button class="music-btn" onclick="skipForward()" title="ข้ามไป 10 วินาที">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z" />
+                        </svg>
+                    </button>
+                </div>
+                <audio id="audioPlayer" src="บท1/music.mp4"></audio>
+            </div>
+
+            <!-- YouTube Section -->
+            <div class="youtube-section">
+                <div class="youtube-header">
+                    <div class="youtube-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                        </svg>
+                    </div>
+                    <div class="youtube-title-wrap">
+                        <div class="youtube-label">ศึกษาเพิ่มเติม</div>
+                        <div class="youtube-title">วิดีโอประกอบการเรียนรู้บทที่ 1</div>
+                    </div>
+                </div>
+
+                <div class="youtube-content">
+                    <div class="youtube-video">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="files-section">
+                <div class="files-title">เอกสารและแบบทดสอบ</div>
+                <div class="files-grid">
+                    <a href="บท1/บท 1.pptx" class="file-item">
+                        <div class="file-icon">PPT</div>
+                        <div class="file-info">
+                            <span class="file-name">สไลด์บรรยาย</span>
+                            <span class="file-type">PowerPoint</span>
+                        </div>
+                    </a>
+                    <a href="บท1/ใบงานที่ 1-คณิตคอม.doc" class="file-item">
+                        <div class="file-icon">DOC</div>
+                        <div class="file-info">
+                            <span class="file-name">ใบงานที่ 1</span>
+                            <span class="file-type">เอกสาร Word</span>
+                        </div>
+                    </a>
+                    <a href="บท1/แบบทดสอบครั้งที่ 1 เรื่องระบบเลขจำนวนจริง.docx" class="file-item">
+                        <div class="file-icon">DOC</div>
+                        <div class="file-info">
+                            <span class="file-name">แบบทดสอบบทที่ 1</span>
+                            <span class="file-type">เอกสาร Word</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="nav-bottom">
+                <a href="index.html" class="nav-link">
+                    <span class="nav-link-label">ย้อนกลับ</span>
+                    <span class="nav-link-title">หน้าแรก</span>
+                </a>
+                <a href="chapter2.html" class="nav-link" style="text-align: right;">
+                    <span class="nav-link-label">บทถัดไป</span>
+                    <span class="nav-link-title">บทที่ 2: ระบบจำนวนและเลขฐาน</span>
+                </a>
+            </nav>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-text">สื่อการเรียนรู้ - คณิตศาสตร์คอมพิวเตอร์</span>
+            <div class="footer-links">
+                <a href="index.html">หน้าแรก</a>
+                <a href="chapter8.html">คำอธิบายรายวิชา</a>
+                <a href="chapter7.html">ผู้จัดทำ</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const audio = document.getElementById('audioPlayer');
+        const playBtn = document.getElementById('playBtn');
+        const playIcon = document.getElementById('playIcon');
+        let isPlaying = false;
+
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+                playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+            } else {
+                audio.play();
+                playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function skipBack() {
+            audio.currentTime = Math.max(0, audio.currentTime - 10);
+        }
+
+        function skipForward() {
+            audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+        }
+
+        audio.addEventListener('ended', () => {
+            isPlaying = false;
+            playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+        });
+    </script>
+</body>
+
+</html>

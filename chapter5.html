@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 5 - วงจรลอจิกและพีชคณิตบูลีน</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="grain"></div>
+
+    <div class="topbar">
+        <div class="topbar-inner">
+            <a href="index.html" class="logo">Learning Hub</a>
+            <nav class="topbar-nav">
+                <a href="index.html">หน้าแรก</a>
+                <a href="chapter8.html">คำอธิบายรายวิชา</a>
+                <a href="chapter1.html">บทที่ 1</a>
+                <a href="chapter2.html">บทที่ 2</a>
+                <a href="chapter3.html">บทที่ 3</a>
+                <a href="chapter4.html">บทที่ 4</a>
+                <a href="chapter5.html" class="active">บทที่ 5</a>
+                <a href="chapter6.html">บทที่ 6</a>
+                <a href="chapter7.html">ผู้จัดทำ</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="index.html">หน้าแรก</a> / บทที่ 5
+    </div>
+
+    <header class="chapter-header">
+        <div class="chapter-label">บทที่ 5</div>
+        <h1>วงจรลอจิกและพีชคณิตบูลีน</h1>
+        <p>หัวใจสำคัญของระบบดิจิทัลและคอมพิวเตอร์</p>
+    </header>
+
+    <div class="content-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-title">ในบทนี้</div>
+            <ul class="sidebar-nav">
+                <li><a href="#section-1" class="active">5.1 พีชคณิตบูลีน</a></li>
+                <li><a href="#section-2">5.2 ตารางค่าความจริง</a></li>
+                <li><a href="#section-3">5.3 ลอจิกเกต</a></li>
+                <li><a href="#section-4">5.4 AND Gate</a></li>
+                <li><a href="#section-5">5.5 OR Gate</a></li>
+                <li><a href="#section-6">5.6 NOT Gate</a></li>
+                <li><a href="#section-7">5.7 NAND Gate</a></li>
+                <li><a href="#section-8">5.8 NOR Gate</a></li>
+                <li><a href="#section-9">5.9 XOR Gate</a></li>
+                <li><a href="#section-10">5.10 XNOR Gate</a></li>
+                <li><a href="#section-11">5.11 ความสัมพันธ์</a></li>
+                <li><a href="#section-12">5.12 กฎพื้นฐาน</a></li>
+                <li><a href="#section-13">5.13 ความสำคัญ</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h2 id="section-1">5.1 พีชคณิตบูลีน (Boolean Algebra)</h2>
+            <p>
+                พีชคณิตบูลีนเป็นคณิตศาสตร์ที่ใช้ในการอธิบายการทำงานของระบบดิจิทัล โดยตัวแปรจะมีค่าได้เพียงสองค่าเท่านั้น คือ 0 และ 1
+            </p>
+            <ul>
+                <li><strong>0</strong> แทนสถานะ ปิด / เท็จ / แรงดันต่ำ (Low)</li>
+                <li><strong>1</strong> แทนสถานะ เปิด / จริง / แรงดันสูง (High)</li>
+            </ul>
+            <p>
+                พีชคณิตบูลีนถูกพัฒนาโดย จอร์จ บูล (George Boole) และถูกนำมาใช้เป็นพื้นฐานของการออกแบบวงจรดิจิทัลในปัจจุบัน
+            </p>
+            <p>ตัวดำเนินการหลักในพีชคณิตบูลีน ได้แก่</p>
+            <ul>
+                <li>AND (·)</li>
+                <li>OR (+)</li>
+                <li>NOT (¯ หรือ ')</li>
+            </ul>
+            <p>ตัวอย่างสมการบูลีน เช่น <strong>Y = (A + B) · C</strong></p>
+
+            <h2 id="section-2">5.2 ตารางค่าความจริง (Truth Table)</h2>
+            <p>
+                ตารางค่าความจริงคือเครื่องมือที่ใช้แสดงความสัมพันธ์ระหว่าง อินพุต (Input) และ เอาต์พุต (Output) ของสมการลอจิกหรือวงจรลอจิก
+            </p>
+            <p>หากมีตัวแปรอินพุตจำนวน n ตัว จะมีจำนวนกรณีทั้งหมดเท่ากับ <strong>2ⁿ กรณี</strong></p>
+            <ul>
+                <li>อินพุต 2 ตัว → 4 กรณี</li>
+                <li>อินพุต 3 ตัว → 8 กรณี</li>
+            </ul>
+            <p>ตารางค่าความจริงช่วยให้สามารถตรวจสอบได้ว่าวงจรหรือสมการลอจิกทำงานถูกต้องหรือไม่ในทุกเงื่อนไข</p>
+
+            <h2 id="section-3">5.3 ลอจิกเกต (Logic Gates)</h2>
+            <p>
+                ลอจิกเกตคืออุปกรณ์พื้นฐานของวงจรดิจิทัล ทำหน้าที่รับอินพุตและให้เอาต์พุตตามกฎของตรรกะ ลอจิกเกตที่สำคัญมีดังนี้
+            </p>
+
+            <h2 id="section-4">5.4 AND Gate</h2>
+            <p>AND Gate จะให้เอาต์พุตเป็น 1 ก็ต่อเมื่ออินพุตทุกตัวเป็น 1</p>
+            <p><strong>สมการลอจิก:</strong> Y = A · B</p>
+            <p><strong>การใช้งาน:</strong> มักใช้ในระบบที่ต้องการให้หลายเงื่อนไขเป็นจริงพร้อมกัน เช่น ระบบความปลอดภัย</p>
+
+            <h2 id="section-5">5.5 OR Gate</h2>
+            <p>OR Gate จะให้เอาต์พุตเป็น 1 เมื่อมีอินพุตอย่างน้อยหนึ่งตัวเป็น 1</p>
+            <p><strong>สมการลอจิก:</strong> Y = A + B</p>
+            <p><strong>การใช้งาน:</strong> ใช้ในระบบแจ้งเตือน เช่น อุณหภูมิสูง หรือ ความดันสูง ระบบจะทำงานทันที</p>
+
+            <h2 id="section-6">5.6 NOT Gate (Inverter)</h2>
+            <p>NOT Gate ทำหน้าที่กลับค่าลอจิก</p>
+            <ul>
+                <li>0 → 1</li>
+                <li>1 → 0</li>
+            </ul>
+            <p><strong>สมการลอจิก:</strong> Y = Ā</p>
+
+            <h2 id="section-7">5.7 NAND Gate</h2>
+            <p>NAND Gate คือ AND Gate ที่ผ่านการกลับค่า (NOT) จะให้เอาต์พุตเป็น 0 เพียงกรณีเดียว คือเมื่ออินพุตทุกตัวเป็น 1</p>
+            <p><strong>สมการลอจิก:</strong> Y = (A · B)̄</p>
+            <p><strong>ข้อดี:</strong> เป็นเกตที่นิยมใช้มาก เพราะสามารถนำมาสร้างเกตชนิดอื่นได้ทั้งหมด</p>
+
+            <h2 id="section-8">5.8 NOR Gate</h2>
+            <p>NOR Gate คือ OR Gate ที่ผ่านการกลับค่า จะให้เอาต์พุตเป็น 1 เมื่ออินพุตทุกตัวเป็น 0</p>
+            <p><strong>สมการลอจิก:</strong> Y = (A + B)̄</p>
+
+            <h2 id="section-9">5.9 XOR Gate (Exclusive OR)</h2>
+            <p>XOR Gate จะให้เอาต์พุตเป็น 1 เมื่ออินพุตแตกต่างกัน</p>
+            <p><strong>สมการลอจิก:</strong> Y = A ⊕ B</p>
+            <p><strong>การใช้งาน:</strong> นิยมใช้ในวงจรเปรียบเทียบและวงจรคำนวณ</p>
+
+            <h2 id="section-10">5.10 XNOR Gate</h2>
+            <p>XNOR Gate เป็นการกลับค่าของ XOR จะให้เอาต์พุตเป็น 1 เมื่ออินพุตเหมือนกัน</p>
+
+            <h2 id="section-11">5.11 ความสัมพันธ์ระหว่างวงจรลอจิก สมการบูลีน และตารางค่าความจริง</h2>
+            <p>การออกแบบวงจรดิจิทัลเกี่ยวข้องกับ 3 ส่วนสำคัญ ได้แก่</p>
+            <ol>
+                <li>วงจรลอจิก</li>
+                <li>สมการพีชคณิตบูลีน</li>
+                <li>ตารางค่าความจริง</li>
+            </ol>
+            <p>หากทราบข้อมูลอย่างใดอย่างหนึ่ง จะต้องสามารถหาที่เหลือได้ เช่น</p>
+            <ul>
+                <li>ทราบสมการ → เขียนวงจรและตารางค่าความจริงได้</li>
+                <li>ทราบวงจร → เขียนสมการและตารางค่าความจริงได้</li>
+            </ul>
+
+            <h2 id="section-12">5.12 กฎพื้นฐานของพีชคณิตบูลีน</h2>
+            <p>กฎของพีชคณิตบูลีนช่วยให้สามารถลดรูปสมการเพื่อให้วงจรมีขนาดเล็กลง ประหยัดอุปกรณ์ และทำงานได้รวดเร็วขึ้น ตัวอย่างกฎที่สำคัญ เช่น</p>
+            <ul>
+                <li>A + A = A</li>
+                <li>A · A = A</li>
+                <li>A + Ā = 1</li>
+                <li>A · Ā = 0</li>
+            </ul>
+            <p>รวมถึง <strong>ทฤษฎีของเดอมอร์แกน (De Morgan's Theorem)</strong> ซึ่งใช้แปลงรูปสมการและช่วยออกแบบวงจรด้วย NAND หรือ NOR Gate เพียงชนิดเดียว</p>
+
+            <h2 id="section-13">5.13 ความสำคัญของวงจรลอจิกในระบบดิจิทัล</h2>
+            <p>วงจรลอจิกถูกนำไปใช้ในหลายด้าน เช่น</p>
+            <ul>
+                <li>คอมพิวเตอร์และไมโครโปรเซสเซอร์</li>
+                <li>ระบบควบคุมอัตโนมัติ</li>
+                <li>อุปกรณ์อิเล็กทรอนิกส์</li>
+                <li>ระบบดิจิทัลในอุตสาหกรรม</li>
+            </ul>
+            <p>การเข้าใจหลักการของลอจิกเกตและพีชคณิตบูลีนจึงเป็นพื้นฐานสำคัญสำหรับผู้ที่ศึกษาด้านคอมพิวเตอร์ วิศวกรรม และเทคโนโลยีสารสนเทศ</p>
+
+            <!-- Music Player -->
+            <div class="music-player">
+                <div class="music-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                </div>
+                <div class="music-info">
+                    <div class="music-title">เพลงจำเนื้อหาบทที่ 5</div>
+                    <div class="music-subtitle">วงจรลอจิกและพีชคณิตบูลีน - ฟังเพลงเพื่อช่วยจำเนื้อหา</div>
+                </div>
+                <div class="music-controls">
+                    <button class="music-btn" onclick="skipBack()" title="ย้อนกลับ 10 วินาที">
+                        <svg viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/></svg>
+                    </button>
+                    <button class="music-btn play-btn" onclick="togglePlay()" id="playBtn" title="เล่น/หยุด">
+                        <svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5v14l11-7z"/></svg>
+                    </button>
+                    <button class="music-btn" onclick="skipForward()" title="ข้ามไป 10 วินาที">
+                        <svg viewBox="0 0 24 24"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/></svg>
+                    </button>
+                </div>
+                <audio id="audioPlayer" src="บท5/music.mp4"></audio>
+            </div>
+
+            <!-- YouTube Section -->
+            <div class="youtube-section">
+                <div class="youtube-header">
+                    <div class="youtube-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                    </div>
+                    <div class="youtube-title-wrap">
+                        <div class="youtube-label">ศึกษาเพิ่มเติม</div>
+                        <div class="youtube-title">วิดีโอประกอบการเรียนรู้บทที่ 5</div>
+                    </div>
+                </div>
+                <div class="youtube-content">
+                    <div class="youtube-video">
+                        <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" class="youtube-placeholder">
+                            <svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                            <span>คลิกเพื่อดูวิดีโอบน YouTube</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="files-section">
+                <div class="files-title">เอกสารและแบบทดสอบ</div>
+                <div class="files-grid">
+                    <a href="บท5/พีชคณิตบูลีน.pdf" class="file-item">
+                        <div class="file-icon">PDF</div>
+                        <div class="file-info">
+                            <span class="file-name">เอกสารประกอบบทที่ 5</span>
+                            <span class="file-type">เอกสาร PDF</span>
+                        </div>
+                    </a>
+                    <a href="บท5/วงจรลอจิก.pdf" class="file-item">
+                        <div class="file-icon">PDF</div>
+                        <div class="file-info">
+                            <span class="file-name">เอกสารเพิ่มเติม</span>
+                            <span class="file-type">เอกสาร PDF</span>
+                        </div>
+                    </a>
+                    <a href="บท5/แบบฝึก.docx" class="file-item">
+                        <div class="file-icon">DOC</div>
+                        <div class="file-info">
+                            <span class="file-name">แบบทดสอบบทที่ 5</span>
+                            <span class="file-type">เอกสาร Word</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="nav-bottom">
+                <a href="chapter4.html" class="nav-link">
+                    <span class="nav-link-label">บทก่อนหน้า</span>
+                    <span class="nav-link-title">บทที่ 4: ตรรกศาสตร์</span>
+                </a>
+                <a href="chapter6.html" class="nav-link" style="text-align: right;">
+                    <span class="nav-link-label">บทถัดไป</span>
+                    <span class="nav-link-title">บทที่ 6: เมทริกซ์</span>
+                </a>
+            </nav>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-text">สื่อการเรียนรู้ - คณิตศาสตร์คอมพิวเตอร์</span>
+            <div class="footer-links">
+                <a href="index.html">หน้าแรก</a>
+                <a href="chapter8.html">คำอธิบายรายวิชา</a>
+                <a href="chapter7.html">ผู้จัดทำ</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const audio = document.getElementById('audioPlayer');
+        const playBtn = document.getElementById('playBtn');
+        const playIcon = document.getElementById('playIcon');
+        let isPlaying = false;
+
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+                playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+            } else {
+                audio.play();
+                playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function skipBack() {
+            audio.currentTime = Math.max(0, audio.currentTime - 10);
+        }
+
+        function skipForward() {
+            audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+        }
+
+        audio.addEventListener('ended', () => {
+            isPlaying = false;
+            playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+        });
+    </script>
+</body>
+</html>

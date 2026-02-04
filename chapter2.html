@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 2 - ระบบจำนวนและเลขฐาน</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="grain"></div>
+
+    <div class="topbar">
+        <div class="topbar-inner">
+            <a href="index.html" class="logo">Learning Hub</a>
+            <nav class="topbar-nav">
+                <a href="index.html">หน้าแรก</a>
+                <a href="chapter8.html">คำอธิบายรายวิชา</a>
+                <a href="chapter1.html">บทที่ 1</a>
+                <a href="chapter2.html" class="active">บทที่ 2</a>
+                <a href="chapter3.html">บทที่ 3</a>
+                <a href="chapter4.html">บทที่ 4</a>
+                <a href="chapter5.html">บทที่ 5</a>
+                <a href="chapter6.html">บทที่ 6</a>
+                <a href="chapter7.html">ผู้จัดทำ</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="index.html">หน้าแรก</a> / บทที่ 2
+    </div>
+
+    <header class="chapter-header">
+        <div class="chapter-label">บทที่ 2</div>
+        <h1>ระบบจำนวนและเลขฐาน</h1>
+        <p>พื้นฐานสำคัญของคณิตศาสตร์และคอมพิวเตอร์</p>
+    </header>
+
+    <div class="content-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-title">ในบทนี้</div>
+            <ul class="sidebar-nav">
+                <li><a href="#section-1" class="active">2.1 วิวัฒนาการของระบบจำนวนและตัวเลข</a></li>
+                <li><a href="#section-2">2.2 โครงสร้างของระบบจำนวน</a></li>
+                <li><a href="#section-3">2.3 ระบบเลขฐานต่างๆ</a></li>
+                <li><a href="#section-4">2.4 การเปลี่ยนฐานในระบบตัวเลข</a></li>
+                <li><a href="#section-5">2.5 จำนวนจริง</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h2 id="section-1">2.1 วิวัฒนาการของระบบจำนวนและตัวเลข</h2>
+            <p>
+                มนุษย์เริ่มต้นการนับจากการใช้รอยขีดบนผนังถ้ำ ก้อนหิน และนิ้วมือ เพื่อบันทึกจำนวนสิ่งของหรือวันเวลา
+                ต่อมาเมื่อสังคมพัฒนา อารยธรรมโบราณอย่างสุเมเรียนและบาบิโลเนียนได้สร้างสัญลักษณ์แทนตัวเลข
+                และพัฒนาระบบเลขฐานเพื่อใช้ในการคำนวณ ดาราศาสตร์ และการนับเวลา ระบบเลขฐาน 60
+                ของบาบิโลเนียนยังคงใช้มาจนถึงปัจจุบันในระบบชั่วโมง นาที และวินาที
+            </p>
+            <img src="img/img4.jpg" alt="วิวัฒนาการของระบบจำนวน">
+
+            <h2 id="section-2">2.2 โครงสร้างของระบบจำนวน</h2>
+            <p>
+                ระบบจำนวนคือกลุ่มของตัวเลขที่ใช้แทนปริมาณ โดยแต่ละระบบจะมี "ฐาน" เป็นตัวกำหนดจำนวนเลขโดดที่ใช้ เช่น
+                ฐานสิบมีเลข 0–9 ส่วนฐานสองมีเพียง 0 และ 1 ตัวเลขแต่ละหลักมีค่าประจำหลักแตกต่างกันตามกำลังของฐาน เช่น
+                ในฐานสิบ หลักหน่วย หลักสิบ และหลักร้อย
+            </p>
+            <p>
+                โครงสร้างนี้ทำให้มนุษย์สามารถเขียนจำนวนที่มีค่ามากได้อย่างเป็นระบบ
+                และสามารถนำไปใช้คำนวณหรือแปลงฐานได้อย่างถูกต้อง
+            </p>
+            <img src="img/img6.png" alt="โครงสร้างของระบบจำนวน">
+
+            <h2 id="section-3">2.3 ระบบเลขฐานต่างๆ</h2>
+            <p>ระบบเลขฐานที่ใช้กันทั่วไปมีหลายแบบ ได้แก่</p>
+            <ol>
+                <li><strong>เลขฐานสอง</strong> (Binary) ใช้ตัวเลข 0 และ 1 นิยมใช้ในคอมพิวเตอร์และระบบดิจิทัล</li>
+                <li><strong>เลขฐานแปด</strong> (Octal) ใช้ตัวเลข 0 ถึง 7</li>
+                <li><strong>เลขฐานสิบ</strong> (Decimal) ใช้ตัวเลข 0 ถึง 9 เป็นระบบที่ใช้ในชีวิตประจำวัน</li>
+                <li><strong>เลขฐานสิบหก</strong> (Hexadecimal) ใช้ตัวเลข 0 ถึง 9 และตัวอักษร A ถึง F</li>
+            </ol>
+            <p>ระบบเลขฐานเหล่านี้สามารถแปลงค่าระหว่างกันได้ โดยอาศัยหลักการค่าประจำหลักและการหารซ้ำ</p>
+            <img src="img/img5.png" alt="ระบบเลขฐานต่างๆ">
+
+            <h2 id="section-4">2.4 การเปลี่ยนฐานในระบบตัวเลข</h2>
+            <p>
+                การเปลี่ยนฐานเป็นกระบวนการแปลงตัวเลขจากฐานหนึ่งไปยังอีกฐานหนึ่ง เช่น การแปลงจากฐานสิบเป็นฐานสอง
+                หรือจากฐานสิบเป็นฐานห้า วิธีที่นิยมใช้คือการหารซ้ำด้วยค่าฐาน และนำเศษมาเรียงย้อนกลับ
+                วิธีนี้ช่วยให้เข้าใจโครงสร้างของจำนวนในแต่ละฐานได้ชัดเจนยิ่งขึ้น
+            </p>
+            <p>
+                ตัวอย่างจากเอกสารแสดงการแปลงจำนวน 748 ในฐานสิบให้เป็นเลขฐานห้า โดยใช้แนวคิดการมัดดินสอเป็นกลุ่มตามค่าฐาน
+            </p>
+            <img src="img/img7.png" alt="การเปลี่ยนฐานในระบบตัวเลข">
+
+            <h2 id="section-5">2.5 จำนวนจริง</h2>
+            <p>จำนวนจริงคือกลุ่มของจำนวนทั้งหมดที่สามารถเขียนแทนตำแหน่งบนเส้นจำนวนได้ ประกอบด้วย</p>
+            <ul>
+                <li>จำนวนธรรมชาติ เช่น 1, 2, 3, ...</li>
+                <li>จำนวนเต็ม เช่น ..., -2, -1, 0, 1, 2, ...</li>
+                <li>จำนวนตรรกยะ เช่น 1/2, -3/4</li>
+                <li>จำนวนอตรรกยะ เช่น π (พาย), √2</li>
+            </ul>
+            <p>จำนวนจริงเป็นพื้นฐานสำคัญของคณิตศาสตร์ ใช้ในการคำนวณ วัดปริมาณ และอธิบายปรากฏการณ์ทางวิทยาศาสตร์</p>
+            <img src="img/img8.jpg" alt="จำนวนจริง">
+
+            <!-- Music Player -->
+            <div class="music-player">
+                <div class="music-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                </div>
+                <div class="music-info">
+                    <div class="music-title">เพลงจำเนื้อหาบทที่ 2</div>
+                    <div class="music-subtitle">ระบบจำนวนและเลขฐาน - ฟังเพลงเพื่อช่วยจำเนื้อหา</div>
+                </div>
+                <div class="music-controls">
+                    <button class="music-btn" onclick="skipBack()" title="ย้อนกลับ 10 วินาที">
+                        <svg viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/></svg>
+                    </button>
+                    <button class="music-btn play-btn" onclick="togglePlay()" id="playBtn" title="เล่น/หยุด">
+                        <svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5v14l11-7z"/></svg>
+                    </button>
+                    <button class="music-btn" onclick="skipForward()" title="ข้ามไป 10 วินาที">
+                        <svg viewBox="0 0 24 24"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/></svg>
+                    </button>
+                </div>
+                <audio id="audioPlayer" src="บท2/music.mp4"></audio>
+            </div>
+
+            <!-- YouTube Section -->
+            <div class="youtube-section">
+                <div class="youtube-header">
+                    <div class="youtube-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                    </div>
+                    <div class="youtube-title-wrap">
+                        <div class="youtube-label">ศึกษาเพิ่มเติม</div>
+                        <div class="youtube-title">วิดีโอประกอบการเรียนรู้บทที่ 2</div>
+                    </div>
+                </div>
+                <div class="youtube-content">
+                    <div class="youtube-video">
+                        <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" class="youtube-placeholder">
+                            <svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                            <span>คลิกเพื่อดูวิดีโอบน YouTube</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="files-section">
+                <div class="files-title">เอกสารและแบบทดสอบ</div>
+                <div class="files-grid">
+                    <a href="บท2/บทที่2 เลขฐาน.pdf" class="file-item">
+                        <div class="file-icon">PDF</div>
+                        <div class="file-info">
+                            <span class="file-name">เอกสารประกอบบทที่ 2</span>
+                            <span class="file-type">เอกสาร PDF</span>
+                        </div>
+                    </a>
+                    <a href="บท2/Number Base System.pdf" class="file-item">
+                        <div class="file-icon">PDF</div>
+                        <div class="file-info">
+                            <span class="file-name">กรณีศึกษาเพิ่มเติม</span>
+                            <span class="file-type">เอกสาร PDF</span>
+                        </div>
+                    </a>
+                    <a href="บท2/แบบฝึก2.docx" class="file-item">
+                        <div class="file-icon">DOC</div>
+                        <div class="file-info">
+                            <span class="file-name">แบบทดสอบบทที่ 2</span>
+                            <span class="file-type">เอกสาร Word</span>
+                        </div>
+                    </a>
+                    <a href="บท2/แบบฝึก2.pdf" class="file-item">
+                        <div class="file-icon">PDF</div>
+                        <div class="file-info">
+                            <span class="file-name">แบบทดสอบบทที่ 2</span>
+                            <span class="file-type">เอกสาร PDF</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="nav-bottom">
+                <a href="chapter1.html" class="nav-link">
+                    <span class="nav-link-label">บทก่อนหน้า</span>
+                    <span class="nav-link-title">บทที่ 1: ระบบจำนวนจริง</span>
+                </a>
+                <a href="chapter3.html" class="nav-link" style="text-align: right;">
+                    <span class="nav-link-label">บทถัดไป</span>
+                    <span class="nav-link-title">บทที่ 3: การคำนวณเลขฐาน</span>
+                </a>
+            </nav>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-text">สื่อการเรียนรู้ - คณิตศาสตร์คอมพิวเตอร์</span>
+            <div class="footer-links">
+                <a href="index.html">หน้าแรก</a>
+                <a href="chapter8.html">คำอธิบายรายวิชา</a>
+                <a href="chapter7.html">ผู้จัดทำ</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const audio = document.getElementById('audioPlayer');
+        const playBtn = document.getElementById('playBtn');
+        const playIcon = document.getElementById('playIcon');
+        let isPlaying = false;
+
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+                playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+            } else {
+                audio.play();
+                playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function skipBack() {
+            audio.currentTime = Math.max(0, audio.currentTime - 10);
+        }
+
+        function skipForward() {
+            audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+        }
+
+        audio.addEventListener('ended', () => {
+            isPlaying = false;
+            playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ผู้จัดทำ - สื่อการเรียนรู้</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional animations for team page */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        @keyframes rotate-slow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .team-hero-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .shape {
+            position: absolute;
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: -100px;
+            animation: rotate-slow 30s linear infinite;
+        }
+        
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            bottom: 50px;
+            left: -50px;
+            animation: rotate-slow 25s linear infinite reverse;
+        }
+        
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            top: 40%;
+            right: 20%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .team-card {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .team-card:last-child {
+            animation-delay: -3s;
+        }
+        
+        .shimmer-text {
+            background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,0.5) 50%, #fff 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+        }
+        
+        .glow-box {
+            box-shadow: 0 0 60px rgba(102, 126, 234, 0.3);
+        }
+        
+        .team-avatar-ring {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border: 3px solid transparent;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: rotate-slow 10s linear infinite;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        
+        .feature-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .feature-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: #fff;
+        }
+        
+        .feature-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+        
+        .feature-desc {
+            font-size: 14px;
+            color: #777;
+        }
+        
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+
+    <div class="topbar">
+        <div class="topbar-inner">
+            <a href="index.html" class="logo">Learning Hub</a>
+            <nav class="topbar-nav">
+                <a href="index.html">หน้าแรก</a>
+                <a href="chapter8.html">คำอธิบายรายวิชา</a>
+                <a href="chapter1.html">บทที่ 1</a>
+                <a href="chapter2.html">บทที่ 2</a>
+                <a href="chapter3.html">บทที่ 3</a>
+                <a href="chapter4.html">บทที่ 4</a>
+                <a href="chapter5.html">บทที่ 5</a>
+                <a href="chapter6.html">บทที่ 6</a>
+                <a href="chapter7.html" class="active">ผู้จัดทำ</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="team-hero">
+        <div class="team-hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="team-hero-content">
+            <div class="team-badge">
+                <div class="team-badge-dot"></div>
+                <span>ทีมพัฒนา</span>
+            </div>
+            <h1 class="shimmer-text">ผู้จัดทำ</h1>
+            <p>ทีมงานผู้พัฒนาสื่อการเรียนรู้คณิตศาสตร์คอมพิวเตอร์</p>
+        </div>
+    </section>
+
+    <!-- Team Cards -->
+    <section class="team-section">
+        <div class="team-grid">
+            <!-- Member 1 - Web Developer -->
+            <div class="team-card glow-box">
+                <div class="team-card-header">
+                    <div class="team-card-pattern"></div>
+                    <div class="team-avatar-wrap">
+                        <!-- ใส่รูปภาพที่นี่ โดยเปลี่ยน src เป็น path ของรูป -->
+                        <div class="team-avatar-placeholder" style="position: relative;">
+                            <div class="team-avatar-ring"></div>
+                            <!-- ลบ div นี้แล้วใส่ <img class="team-avatar" src="รูปของคุณ.jpg" alt="รูปโปรไฟล์"> แทน -->
+                            ช
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card-body">
+                    <span class="team-role-badge">Web Developer</span>
+                    <h3 class="team-name">[ชื่อ นามสกุล]</h3>
+                    <p class="team-subtitle">นักพัฒนาเว็บไซต์</p>
+                    
+                    <div class="team-info-grid">
+                        <div class="team-info-item">
+                            <span class="team-info-label">รหัสนักศึกษา</span>
+                            <span class="team-info-value">[รหัสนักศึกษา]</span>
+                        </div>
+                        <div class="team-info-item">
+                            <span class="team-info-label">เลขที่</span>
+                            <span class="team-info-value">[เลขที่]</span>
+                        </div>
+                        <div class="team-info-item">
+                            <span class="team-info-label">ระดับชั้น</span>
+                            <span class="team-info-value">[ระดับชั้น เช่น ม.6/1]</span>
+                        </div>
+                        <div class="team-info-item">
+                            <span class="team-info-label">สถานศึกษา</span>
+                            <span class="team-info-value">[ชื่อโรงเรียน/วิทยาลัย]</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-responsibilities">
+                        <div class="team-resp-title">หน้าที่รับผิดชอบ</div>
+                        <ul class="team-resp-list">
+                            <li>ออกแบบและพัฒนาเว็บไซต์ทั้งหมด</li>
+                            <li>จัดทำระบบนำทางและโครงสร้างเว็บไซต์</li>
+                            <li>ออกแบบ UI/UX และ Responsive Design</li>
+                            <li>รวบรวมและจัดเรียงเนื้อหาบทเรียน</li>
+                            <li>ทดสอบและแก้ไขข้อผิดพลาดของเว็บไซต์</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 2 - Music Composer -->
+            <div class="team-card glow-box">
+                <div class="team-card-header">
+                    <div class="team-card-pattern"></div>
+                    <div class="team-avatar-wrap">
+                        <!-- ใส่รูปภาพที่นี่ โดยเปลี่ยน src เป็น path ของรูป -->
+                        <div class="team-avatar-placeholder" style="position: relative;">
+                            <div class="team-avatar-ring"></div>
+                            <!-- ลบ div นี้แล้วใส่ <img class="team-avatar" src="รูปของคุณ.jpg" alt="รูปโปรไฟล์"> แทน -->
+                            ด
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card-body">
+                    <span class="team-role-badge">Music Composer</span>
+                    <h3 class="team-name">[ชื่อ นามสกุล]</h3>
+                    <p class="team-subtitle">ผู้แต่งเพลงประกอบ</p>
+                    
+                    <div class="team-info-grid">
+                        <div class="team-info-item">
+                            <span class="team-info-label">รหัสนักศึกษา</span>
+                            <span class="team-info-value">[รหัสนักศึกษา]</span>
+                        </div>
+                        <div class="team-info-item">
+                            <span class="team-info-label">เลขที่</span>
+                            <span class="team-info-value">[เลขที่]</span>
+                        </div>
+                        <div class="team-info-item">
+                            <span class="team-info-label">ระดับชั้น</span>
+                            <span class="team-info-value">[ระดับชั้น เช่น ม.6/1]</span>
+                        </div>
+                        <div class="team-info-item">
+                            <span class="team-info-label">สถานศึกษา</span>
+                            <span class="team-info-value">[ชื่อโรงเรียน/วิทยาลัย]</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-responsibilities">
+                        <div class="team-resp-title">หน้าที่รับผิดชอบ</div>
+                        <ul class="team-resp-list">
+                            <li>แต่งเพลงจำเนื้อหาทุกบทเรียน</li>
+                            <li>ผลิตและมิกซ์เสียงเพลงประกอบ</li>
+                            <li>สร้างสรรค์ทำนองที่จดจำง่าย</li>
+                            <li>เรียบเรียงเนื้อเพลงให้สอดคล้องกับเนื้อหา</li>
+                            <li>บันทึกและตัดต่อไฟล์เสียง</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Info Section -->
+    <section class="project-info-section">
+        <div class="project-info-card">
+            <div class="project-info-header">
+                <h2>ข้อมูลโครงงาน</h2>
+                <p>รายละเอียดการจัดทำสื่อการเรียนรู้</p>
+            </div>
+            <div class="project-info-grid">
+                <div class="project-info-item">
+                    <div class="project-info-item-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/><path d="M1 9v8l11 6 11-6V9l-11 6L1 9z" opacity=".3"/></svg>
+                    </div>
+                    <div class="project-info-item-label">รายวิชา</div>
+                    <div class="project-info-item-value">คณิตศาสตร์คอมพิวเตอร์</div>
+                </div>
+                <div class="project-info-item">
+                    <div class="project-info-item-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
+                    </div>
+                    <div class="project-info-item-label">ภาคการศึกษา</div>
+                    <div class="project-info-item-value">[ภาคเรียนที่/ปีการศึกษา]</div>
+                </div>
+                <div class="project-info-item">
+                    <div class="project-info-item-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <div class="project-info-item-label">สถานศึกษา</div>
+                    <div class="project-info-item-value">[ชื่อโรงเรียน/วิทยาลัย]</div>
+                </div>
+                <div class="project-info-item">
+                    <div class="project-info-item-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <div class="project-info-item-label">อาจารย์ที่ปรึกษา</div>
+                    <div class="project-info-item-value">[ชื่ออาจารย์ที่ปรึกษา]</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section style="max-width: 1000px; margin: 0 auto; padding: 0 32px 80px;">
+        <div style="text-align: center; margin-bottom: 16px;">
+            <h2 style="font-size: 28px; font-weight: 700; color: #1a1a2e;">จุดเด่นของสื่อการเรียนรู้</h2>
+            <p style="color: #777; font-size: 16px;">สิ่งที่ทำให้สื่อการเรียนรู้นี้พิเศษกว่าที่อื่น</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM9 8h2v2H9zm0 3h2v2H9zm0 3h2v2H9zm3-6h2v2h-2zm0 3h2v2h-2zm0 3h2v2h-2zm3-6h2v2h-2zm0 3h2v2h-2zm0 3h2v2h-2z"/></svg>
+                </div>
+                <h3 class="feature-title">เนื้อหาครบถ้วน</h3>
+                <p class="feature-desc">ครอบคลุม 6 บทเรียนสำคัญของคณิตศาสตร์คอมพิวเตอร์</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                </div>
+                <h3 class="feature-title">เพลงจำเนื้อหา</h3>
+                <p class="feature-desc">มีเพลงช่วยจำเนื้อหาทุกบท ทำให้เรียนสนุกและจำง่ายขึ้น</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                </div>
+                <h3 class="feature-title">วิดีโอเสริม</h3>
+                <p class="feature-desc">ลิงก์วิดีโอ YouTube ประกอบทุกบทเพื่อศึกษาเพิ่มเติม</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Acknowledgment -->
+    <section style="max-width: 900px; margin: 0 auto; padding: 0 32px 80px;">
+        <div class="callout case-study">
+            <div class="callout-title">กิตติกรรมประกาศ</div>
+            <p>
+                ขอขอบคุณอาจารย์ที่ปรึกษาที่ให้คำแนะนำและสนับสนุนในการจัดทำโครงงานนี้ 
+                รวมถึงขอบคุณผู้ปกครองและเพื่อนๆ ที่ให้กำลังใจตลอดการทำงาน 
+                หวังว่าสื่อการเรียนรู้นี้จะเป็นประโยชน์แก่ผู้ที่สนใจศึกษาคณิตศาสตร์คอมพิวเตอร์ต่อไป
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-text">สื่อการเรียนรู้ - คณิตศาสตร์คอมพิวเตอร์</span>
+            <div class="footer-links">
+                <a href="index.html">หน้าแรก</a>
+                <a href="chapter8.html">คำอธิบายรายวิชา</a>
+                <a href="chapter7.html">ผู้จัดทำ</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

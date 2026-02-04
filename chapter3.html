@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 3 - การบวกและการลบในระบบเลขฐาน</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="grain"></div>
+
+    <div class="topbar">
+        <div class="topbar-inner">
+            <a href="index.html" class="logo">Learning Hub</a>
+            <nav class="topbar-nav">
+                <a href="index.html">หน้าแรก</a>
+                <a href="chapter8.html">คำอธิบายรายวิชา</a>
+                <a href="chapter1.html">บทที่ 1</a>
+                <a href="chapter2.html">บทที่ 2</a>
+                <a href="chapter3.html" class="active">บทที่ 3</a>
+                <a href="chapter4.html">บทที่ 4</a>
+                <a href="chapter5.html">บทที่ 5</a>
+                <a href="chapter6.html">บทที่ 6</a>
+                <a href="chapter7.html">ผู้จัดทำ</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="index.html">หน้าแรก</a> / บทที่ 3
+    </div>
+
+    <header class="chapter-header">
+        <div class="chapter-label">บทที่ 3</div>
+        <h1>การบวกและการลบในระบบเลขฐาน</h1>
+        <p>พื้นฐานการคำนวณในโลกดิจิทัล</p>
+    </header>
+
+    <div class="content-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-title">ในบทนี้</div>
+            <ul class="sidebar-nav">
+                <li><a href="#section-1" class="active">3.1 หลักการของการบวกในระบบเลขฐาน</a></li>
+                <li><a href="#section-2">3.2 ตัวอย่างการบวกเลขฐานสอง</a></li>
+                <li><a href="#section-3">3.3 หลักการของการลบในระบบเลขฐาน</a></li>
+                <li><a href="#section-4">3.4 ตัวอย่างการลบเลขฐานสอง</a></li>
+                <li><a href="#section-5">3.5 การประยุกต์ใช้การบวกและการลบเลขฐาน</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h2 id="section-1">3.1 หลักการของการบวกในระบบเลขฐาน</h2>
+            <p>
+                การบวกในระบบเลขฐานมีหลักการคล้ายกับการบวกเลขฐานสิบ คือบวกตัวเลขในหลักเดียวกันจากขวาไปซ้าย
+                และถ้าผลบวกมีค่ามากกว่าหรือเท่ากับค่าฐาน จะต้อง "ทด" ไปยังหลักถัดไป ตัวอย่างเช่น ในเลขฐานสอง เมื่อบวก 1
+                กับ 1 จะได้ผลลัพธ์เป็น 10 ซึ่งหมายถึงได้ 0 และทด 1 ไปยังหลักถัดไป
+            </p>
+            <p>
+                หลักการนี้สามารถใช้ได้กับทุกระบบเลขฐาน ไม่ว่าจะเป็นฐานสอง ฐานห้า หรือฐานสิบหก
+                โดยต้องคำนึงถึงค่าฐานและสัญลักษณ์ตัวเลขที่ใช้ในแต่ละระบบ
+            </p>
+
+            <h2 id="section-2">3.2 ตัวอย่างการบวกเลขฐานสอง</h2>
+            <p>เลขฐานสองเป็นระบบเลขฐานที่ใช้มากที่สุดในงานคอมพิวเตอร์ โดยใช้เพียงตัวเลข 0 และ 1
+                การบวกเลขฐานสองมีรูปแบบง่ายๆ ดังนี้</p>
+            <ul>
+                <li>0 + 0 = 0</li>
+                <li>0 + 1 = 1</li>
+                <li>1 + 0 = 1</li>
+                <li>1 + 1 = 10 (ได้ 0 และทด 1)</li>
+            </ul>
+            <p>การบวกหลายหลักจะใช้หลักการเดียวกันกับการบวกเลขฐานสิบ แต่ต้องระวังการทดเมื่อผลรวมเท่ากับหรือมากกว่าสอง</p>
+            <img src="img/img10.jpg" alt="ตัวอย่างการบวกเลขฐานสอง">
+
+            <h2 id="section-3">3.3 หลักการของการลบในระบบเลขฐาน</h2>
+            <p>
+                การลบในระบบเลขฐานใช้หลักการคล้ายกับการลบเลขฐานสิบ คือถ้าตัวตั้งน้อยกว่าตัวลบ จะต้อง "ยืม" จากหลักถัดไป
+                การยืมในแต่ละฐานจะยืมตามค่าฐาน เช่น ในฐานสอง เมื่อยืมจะได้ค่าเพิ่มเป็น 2 ในหลักนั้น
+            </p>
+            <p>
+                การลบในระบบเลขฐานจำเป็นต้องเข้าใจค่าประจำหลักและการยืมอย่างถูกต้อง เพื่อหลีกเลี่ยงความผิดพลาดในการคำนวณ
+            </p>
+
+            <h2 id="section-4">3.4 ตัวอย่างการลบเลขฐานสอง</h2>
+            <p>
+                ในการลบเลขฐานสอง กรณีที่ไม่ต้องยืมจะคำนวณได้ง่าย เช่น 1 – 0 = 1 และ 1 – 1 = 0 แต่ถ้าเป็นกรณี 0 – 1
+                จะต้องยืมจากหลักถัดไป ทำให้หลักนั้นกลายเป็น 2 และคำนวณต่อไปตามขั้นตอน
+            </p>
+            <p>วิธีการนี้เป็นพื้นฐานสำคัญของการทำงานในวงจรดิจิทัลและหน่วยประมวลผลของคอมพิวเตอร์</p>
+            <img src="img/img11.jpg" alt="ตัวอย่างการลบเลขฐานสอง">
+
+            <h2 id="section-5">3.5 การประยุกต์ใช้การบวกและการลบเลขฐาน</h2>
+            <p>การบวกและการลบในระบบเลขฐานถูกนำไปใช้ในหลายด้าน เช่น</p>
+            <ul>
+                <li>การดำเนินการของหน่วยประมวลผลในคอมพิวเตอร์</li>
+                <li>การเขียนโปรแกรมและการคำนวณข้อมูลดิจิทัล</li>
+                <li>การสื่อสารข้อมูลและระบบเครือข่าย</li>
+            </ul>
+            <p>ความเข้าใจพื้นฐานเหล่านี้ช่วยให้ผู้เรียนสามารถต่อยอดไปสู่การเรียนรู้ระบบคอมพิวเตอร์ขั้นสูงได้</p>
+
+            <!-- Music Player -->
+            <div class="music-player">
+                <div class="music-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                </div>
+                <div class="music-info">
+                    <div class="music-title">เพลงจำเนื้อหาบทที่ 3</div>
+                    <div class="music-subtitle">การบวกและการลบในระบบเลขฐาน - ฟังเพลงเพื่อช่วยจำเนื้อหา</div>
+                </div>
+                <div class="music-controls">
+                    <button class="music-btn" onclick="skipBack()" title="ย้อนกลับ 10 วินาที">
+                        <svg viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/></svg>
+                    </button>
+                    <button class="music-btn play-btn" onclick="togglePlay()" id="playBtn" title="เล่น/หยุด">
+                        <svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5v14l11-7z"/></svg>
+                    </button>
+                    <button class="music-btn" onclick="skipForward()" title="ข้ามไป 10 วินาที">
+                        <svg viewBox="0 0 24 24"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/></svg>
+                    </button>
+                </div>
+                <audio id="audioPlayer" src="บท3/music.mp4"></audio>
+            </div>
+
+            <!-- YouTube Section -->
+            <div class="youtube-section">
+                <div class="youtube-header">
+                    <div class="youtube-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                    </div>
+                    <div class="youtube-title-wrap">
+                        <div class="youtube-label">ศึกษาเพิ่มเติม</div>
+                        <div class="youtube-title">วิดีโอประกอบการเรียนรู้บทที่ 3</div>
+                    </div>
+                </div>
+                <div class="youtube-content">
+                    <div class="youtube-video">
+                        <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" class="youtube-placeholder">
+                            <svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                            <span>คลิกเพื่อดูวิดีโอบน YouTube</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="files-section">
+                <div class="files-title">เอกสารและแบบทดสอบ</div>
+                <div class="files-grid">
+                    <a href="บท3/การบวกลบเลขฐาน.pdf" class="file-item">
+                        <div class="file-icon">PDF</div>
+                        <div class="file-info">
+                            <span class="file-name">เอกสารประกอบบทที่ 3</span>
+                            <span class="file-type">เอกสาร PDF</span>
+                        </div>
+                    </a>
+                    <a href="บท3/แบบฝึก.docx" class="file-item">
+                        <div class="file-icon">DOC</div>
+                        <div class="file-info">
+                            <span class="file-name">แบบทดสอบบทที่ 3</span>
+                            <span class="file-type">เอกสาร Word</span>
+                        </div>
+                    </a>
+                    <a href="บท3/แบบฝึก 2.docx" class="file-item">
+                        <div class="file-icon">DOC</div>
+                        <div class="file-info">
+                            <span class="file-name">แบบทดสอบบทที่ 3 (2)</span>
+                            <span class="file-type">เอกสาร Word</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="nav-bottom">
+                <a href="chapter2.html" class="nav-link">
+                    <span class="nav-link-label">บทก่อนหน้า</span>
+                    <span class="nav-link-title">บทที่ 2: ระบบจำนวนและเลขฐาน</span>
+                </a>
+                <a href="chapter4.html" class="nav-link" style="text-align: right;">
+                    <span class="nav-link-label">บทถัดไป</span>
+                    <span class="nav-link-title">บทที่ 4: ตรรกศาสตร์</span>
+                </a>
+            </nav>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-text">สื่อการเรียนรู้ - คณิตศาสตร์คอมพิวเตอร์</span>
+            <div class="footer-links">
+                <a href="index.html">หน้าแรก</a>
+                <a href="chapter8.html">คำอธิบายรายวิชา</a>
+                <a href="chapter7.html">ผู้จัดทำ</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const audio = document.getElementById('audioPlayer');
+        const playBtn = document.getElementById('playBtn');
+        const playIcon = document.getElementById('playIcon');
+        let isPlaying = false;
+
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+                playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+            } else {
+                audio.play();
+                playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function skipBack() {
+            audio.currentTime = Math.max(0, audio.currentTime - 10);
+        }
+
+        function skipForward() {
+            audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+        }
+
+        audio.addEventListener('ended', () => {
+            isPlaying = false;
+            playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+        });
+    </script>
+</body>
+</html>

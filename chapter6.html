@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 6 - เมทริกซ์</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="grain"></div>
+
+    <div class="topbar">
+        <div class="topbar-inner">
+            <a href="index.html" class="logo">Learning Hub</a>
+            <nav class="topbar-nav">
+                <a href="index.html">หน้าแรก</a>
+                <a href="chapter8.html">คำอธิบายรายวิชา</a>
+                <a href="chapter1.html">บทที่ 1</a>
+                <a href="chapter2.html">บทที่ 2</a>
+                <a href="chapter3.html">บทที่ 3</a>
+                <a href="chapter4.html">บทที่ 4</a>
+                <a href="chapter5.html">บทที่ 5</a>
+                <a href="chapter6.html" class="active">บทที่ 6</a>
+                <a href="chapter7.html">ผู้จัดทำ</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="index.html">หน้าแรก</a> / บทที่ 6
+    </div>
+
+    <header class="chapter-header">
+        <div class="chapter-label">บทที่ 6</div>
+        <h1>เมทริกซ์ (Matrix)</h1>
+        <p>เครื่องมือสำคัญทางคณิตศาสตร์และเทคโนโลยี</p>
+    </header>
+
+    <div class="content-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-title">ในบทนี้</div>
+            <ul class="sidebar-nav">
+                <li><a href="#section-1" class="active">6.1 ความหมายของเมทริกซ์</a></li>
+                <li><a href="#section-2">6.2 ชนิดของเมทริกซ์</a></li>
+                <li><a href="#section-3">6.3 การบวกและการลบเมทริกซ์</a></li>
+                <li><a href="#section-4">6.4 การคูณเมทริกซ์</a></li>
+                <li><a href="#section-5">6.5 ดีเทอร์มิแนนต์</a></li>
+                <li><a href="#section-6">6.6 เมทริกซ์ผกผัน</a></li>
+                <li><a href="#section-7">6.7 การประยุกต์ใช้</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h2 id="section-1">6.1 ความหมายของเมทริกซ์</h2>
+            <p>
+                เมทริกซ์ (Matrix) คือการจัดเรียงข้อมูลในรูปแบบตารางสี่เหลี่ยม โดยประกอบด้วย แถว (Row) และ หลัก (Column) 
+                แต่ละตำแหน่งในตารางเรียกว่า สมาชิกของเมทริกซ์ (Element)
+            </p>
+            <p>
+                เมทริกซ์มักเขียนแทนด้วยอักษรตัวพิมพ์ใหญ่ เช่น A, B, C และเขียนขนาดของเมทริกซ์ในรูป <strong>m × n</strong> โดย
+            </p>
+            <ul>
+                <li><strong>m</strong> คือจำนวนแถว</li>
+                <li><strong>n</strong> คือจำนวนหลัก</li>
+            </ul>
+            <p>ตัวอย่าง: เมทริกซ์ขนาด 2 × 3 หมายถึง มี 2 แถว และ 3 หลัก</p>
+
+            <h2 id="section-2">6.2 ชนิดของเมทริกซ์</h2>
+            <p>เมทริกซ์สามารถแบ่งออกได้หลายชนิดตามลักษณะของข้อมูล เช่น</p>
+            <ul>
+                <li><strong>เมทริกซ์แถว (Row Matrix)</strong> มีเพียง 1 แถว</li>
+                <li><strong>เมทริกซ์หลัก (Column Matrix)</strong> มีเพียง 1 หลัก</li>
+                <li><strong>เมทริกซ์จัตุรัส (Square Matrix)</strong> จำนวนแถวเท่ากับจำนวนหลัก</li>
+                <li><strong>เมทริกซ์ศูนย์ (Zero Matrix)</strong> สมาชิกทุกตัวเป็นศูนย์</li>
+                <li><strong>เมทริกซ์เอกลักษณ์ (Identity Matrix)</strong> เป็นเมทริกซ์จัตุรัสที่สมาชิกบนแนวทแยงหลักเป็น 1 และตำแหน่งอื่นเป็น 0</li>
+            </ul>
+            <p>เมทริกซ์เอกลักษณ์มีบทบาทคล้ายเลข 1 ในการคูณทางพีชคณิต</p>
+
+            <h2 id="section-3">6.3 การบวกและการลบเมทริกซ์</h2>
+            <p>
+                การบวกและการลบเมทริกซ์จะทำได้ก็ต่อเมื่อเมทริกซ์ทั้งสองมีขนาดเท่ากัน 
+                การคำนวณจะทำโดยนำสมาชิกในตำแหน่งเดียวกันมาบวกหรือลบกันโดยตรง
+            </p>
+            <p>การดำเนินการลักษณะนี้ช่วยให้สามารถรวมข้อมูลหรือเปรียบเทียบข้อมูลในรูปแบบตารางได้อย่างเป็นระบบ</p>
+
+            <div class="callout">
+                <div class="callout-title">ตัวอย่าง</div>
+                <p>ถ้า A และ B เป็นเมทริกซ์ขนาด 2×2 การบวก A + B จะได้เมทริกซ์ใหม่ขนาด 2×2 โดยสมาชิกแต่ละตำแหน่งคือผลบวกของสมาชิกในตำแหน่งเดียวกัน</p>
+            </div>
+
+            <h2 id="section-4">6.4 การคูณเมทริกซ์</h2>
+            <p>
+                การคูณเมทริกซ์เป็นกระบวนการที่สำคัญและมีเงื่อนไขเฉพาะ โดย<strong>จำนวนหลักของเมทริกซ์ตัวหน้า ต้องเท่ากับจำนวนแถวของเมทริกซ์ตัวหลัง</strong>
+            </p>
+            <p>
+                ผลลัพธ์ที่ได้จะเป็นเมทริกซ์ใหม่ ซึ่งขนาดขึ้นอยู่กับจำนวนแถวของเมทริกซ์ตัวหน้า และจำนวนหลักของเมทริกซ์ตัวหลัง 
+                การคูณเมทริกซ์ถูกนำไปใช้ในงานที่เกี่ยวข้องกับการแปลงข้อมูล เช่น การหมุนภาพ การเลื่อนตำแหน่ง และการคำนวณระบบสมการเชิงเส้น
+            </p>
+
+            <h2 id="section-5">6.5 ดีเทอร์มิแนนต์ของเมทริกซ์</h2>
+            <p>
+                ดีเทอร์มิแนนต์เป็นค่าจำนวนจริงที่คำนวณได้จากเมทริกซ์จัตุรัส มีบทบาทสำคัญในการวิเคราะห์คุณสมบัติของเมทริกซ์ 
+                เช่น การตรวจสอบว่าเมทริกซ์สามารถหาผกผันได้หรือไม่
+            </p>
+            <p>
+                หากดีเทอร์มิแนนต์มีค่าเป็นศูนย์ เมทริกซ์นั้นจะไม่สามารถหาผกผันได้ 
+                และระบบสมการที่เกี่ยวข้องอาจไม่มีคำตอบหรือมีคำตอบได้หลายค่า
+            </p>
+
+            <h2 id="section-6">6.6 เมทริกซ์ผกผัน (Inverse Matrix)</h2>
+            <p>
+                เมทริกซ์ผกผันคือเมทริกซ์ที่เมื่อคูณกับเมทริกซ์เดิมแล้วจะได้เมทริกซ์เอกลักษณ์ 
+                เมทริกซ์ผกผันมีความสำคัญอย่างมากในการแก้ระบบสมการเชิงเส้น โดยเฉพาะในกรณีที่ใช้วิธีเมทริกซ์ในการคำนวณ
+            </p>
+            <p>
+                อย่างไรก็ตาม ไม่ใช่ทุกเมทริกซ์จะมีเมทริกซ์ผกผัน 
+                <strong>เฉพาะเมทริกซ์จัตุรัสที่มีดีเทอร์มิแนนต์ไม่เท่ากับศูนย์เท่านั้น</strong>
+            </p>
+
+            <h2 id="section-7">6.7 การประยุกต์ใช้เมทริกซ์</h2>
+            <p>เมทริกซ์ถูกนำไปใช้ในหลากหลายด้าน เช่น</p>
+            <ul>
+                <li>การแก้ระบบสมการเชิงเส้น</li>
+                <li>กราฟิกคอมพิวเตอร์และการประมวลผลภาพ</li>
+                <li>ปัญญาประดิษฐ์และการวิเคราะห์ข้อมูล</li>
+                <li>ฟิสิกส์และวิศวกรรม</li>
+                <li>เศรษฐศาสตร์และสถิติ</li>
+            </ul>
+            <p>การเข้าใจเมทริกซ์จึงเป็นพื้นฐานสำคัญสำหรับการเรียนรู้เทคโนโลยีขั้นสูงในปัจจุบัน</p>
+
+            <div class="callout case-study">
+                <div class="callout-title">กรณีศึกษา</div>
+                <p>ในการประมวลผลภาพดิจิทัล เมทริกซ์ถูกใช้เพื่อเก็บค่าสีของแต่ละพิกเซล และการแปลงภาพ เช่น การหมุน การย่อ/ขยาย ใช้การคูณเมทริกซ์เป็นหลัก</p>
+            </div>
+
+            <!-- Music Player -->
+            <div class="music-player">
+                <div class="music-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                </div>
+                <div class="music-info">
+                    <div class="music-title">เพลงจำเนื้อหาบทที่ 6</div>
+                    <div class="music-subtitle">เมทริกซ์ - ฟังเพลงเพื่อช่วยจำเนื้อหา</div>
+                </div>
+                <div class="music-controls">
+                    <button class="music-btn" onclick="skipBack()" title="ย้อนกลับ 10 วินาที">
+                        <svg viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/></svg>
+                    </button>
+                    <button class="music-btn play-btn" onclick="togglePlay()" id="playBtn" title="เล่น/หยุด">
+                        <svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5v14l11-7z"/></svg>
+                    </button>
+                    <button class="music-btn" onclick="skipForward()" title="ข้ามไป 10 วินาที">
+                        <svg viewBox="0 0 24 24"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/></svg>
+                    </button>
+                </div>
+                <audio id="audioPlayer" src="บท6/music.mp4"></audio>
+            </div>
+
+            <!-- YouTube Section -->
+            <div class="youtube-section">
+                <div class="youtube-header">
+                    <div class="youtube-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                    </div>
+                    <div class="youtube-title-wrap">
+                        <div class="youtube-label">ศึกษาเพิ่มเติม</div>
+                        <div class="youtube-title">วิดีโอประกอบการเรียนรู้บทที่ 6</div>
+                    </div>
+                </div>
+                <div class="youtube-content">
+                    <div class="youtube-video">
+                        <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" class="youtube-placeholder">
+                            <svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                            <span>คลิกเพื่อดูวิดีโอบน YouTube</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="files-section">
+                <div class="files-title">เอกสารและแบบทดสอบ</div>
+                <div class="files-grid">
+                    <a href="บท6/เมทริกซ์.pdf" class="file-item">
+                        <div class="file-icon">PDF</div>
+                        <div class="file-info">
+                            <span class="file-name">เอกสารประกอบบทที่ 6</span>
+                            <span class="file-type">เอกสาร PDF</span>
+                        </div>
+                    </a>
+                    <a href="บท6/แบบฝึก.docx" class="file-item">
+                        <div class="file-icon">DOC</div>
+                        <div class="file-info">
+                            <span class="file-name">แบบทดสอบบทที่ 6</span>
+                            <span class="file-type">เอกสาร Word</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="nav-bottom">
+                <a href="chapter5.html" class="nav-link">
+                    <span class="nav-link-label">บทก่อนหน้า</span>
+                    <span class="nav-link-title">บทที่ 5: พีชคณิตบูลีนและวงจรตรรกะ</span>
+                </a>
+                <a href="index.html" class="nav-link" style="text-align: right;">
+                    <span class="nav-link-label">กลับไป</span>
+                    <span class="nav-link-title">หน้าแรก</span>
+                </a>
+            </nav>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-text">สื่อการเรียนรู้ - คณิตศาสตร์คอมพิวเตอร์</span>
+            <div class="footer-links">
+                <a href="index.html">หน้าแรก</a>
+                <a href="chapter8.html">คำอธิบายรายวิชา</a>
+                <a href="chapter7.html">ผู้จัดทำ</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const audio = document.getElementById('audioPlayer');
+        const playBtn = document.getElementById('playBtn');
+        const playIcon = document.getElementById('playIcon');
+        let isPlaying = false;
+
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+                playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+            } else {
+                audio.play();
+                playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function skipBack() {
+            audio.currentTime = Math.max(0, audio.currentTime - 10);
+        }
+
+        function skipForward() {
+            audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+        }
+
+        audio.addEventListener('ended', () => {
+            isPlaying = false;
+            playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+        });
+    </script>
+</body>
+</html>
